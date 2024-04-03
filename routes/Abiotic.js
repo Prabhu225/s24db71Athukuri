@@ -1,9 +1,6 @@
 var express = require('express');
+const Abiotic_controllers= require('../controllers/Abiotic');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Abiotic', { title: 'Search Results for Class Abiotic' });
-});
-
+/* GET Abiotic */
+router.get('/', Abiotic_controllers.Abiotic_view_all_Page );
 module.exports = router;

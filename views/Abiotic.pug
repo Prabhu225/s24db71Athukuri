@@ -3,11 +3,7 @@ extends layout
 block content
   h1 This is Abiotic Page
   -
-    let results = [
-      { name: 'Gold', type: 'Metal', cost : 20000 },
-      { name: 'Silver', type: 'Metal;', cost: 25000 },
-      { name: 'Platinum', type: 'Metal', cost : 125000 }
-    ]
+    let Abiotic = results  
 
   .container-fluid
     .row
@@ -22,5 +18,5 @@ block content
 
   script.
     function buy(index) {
-      alert("You purchased item " + index);
+      alert(`You purchased item ${index}`);
     }
