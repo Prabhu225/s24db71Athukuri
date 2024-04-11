@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  style. 
+      body{
+        background-color:orange;
+      }
+  form(id='AbioticForm', action="/resource/Abiotic", method="POST")
+    div.form-group
+      label.AbioticAttr(for='name') Abiotic Name
+      input#name(type='text', name='name')
+    div.form-group
+      label.AbioticAttr(for='type') Abiotic_type
+      input#type(type='text', name='type')
+    div.form-group
+      label.AbioticAttr(for='cost') Abiotic cost
+      input#cost(type='number', name='cost')
+    input(type="submit")
+  script.
+    document.forms['AbioticForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.text(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });

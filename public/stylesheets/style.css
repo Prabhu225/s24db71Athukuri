@@ -4,5 +4,9 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00ff73;
 }
+.AbioticAttr {
+  background-color: rgb(255, 157, 127);
+  width: 120px;
+  }

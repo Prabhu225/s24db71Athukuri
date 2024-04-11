@@ -1,0 +1,49 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let Abioticid = toShow._id
+    - let Abiotic_type = toShow.name
+    - let Abioticcost = toShow.type
+    - let Abioticsize = toShow.cost
+    - let actionid = "/resource/Abiotic/" + Abioticid
+    script.
+      let actionid = "#{actionid}";
+    div
+      div.row
+        div(class='AbioticAttr mr-3') Abiotic ID is:
+        div #{Abioticid}
+      div.row
+        div(class='AbioticAttr mr-3') Abiotic Type is:
+        div #{Abiotic_type}
+      div.row
+        div(class='AbioticAttr mr-3') Abiotic Size is:
+        div #{Abioticsize}
+      div.row
+        div(class='AbioticAttr mr-3') Abiotic Cost is:
+        div #{Abioticcost}
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the Abiotic collection
+        window.location.href='/Abiotics'
+      }
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.text(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/Abiotic'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error)
+        });
+      }
