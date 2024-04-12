@@ -2,12 +2,14 @@ extends layout
 
 block content
   h1= title
-
-  - var items = results
+  - let items = results;
   div(class="container-fluid")
-    div(class="row")
-      each s in items
-        div(class="col-sm-2", onclick=`buy('${s}')`)
-          | #{s.name}, #{s.type}, #{s.cost}
-          - let destination = `/Abiotic/update?id=${s._id}`
-          button.btn(class="btn-info ml-1", onclick=`dispatch('${destination}')`) Update
+    div(class="row m-1")
+      each item in items
+        - let destination = "/Abiotic/update?id=" + item._id
+        div(class="row-sm-2 m-1") Item #{item.name}(#{item.type}) is #{item.cost}
+        button.btn(class="btn-primary ml-1", onclick="dispatch('')") Update
+  script.
+    function dispatch(path){
+      window.location.href = path;
+    }
