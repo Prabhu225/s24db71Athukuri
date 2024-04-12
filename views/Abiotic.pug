@@ -1,22 +1,13 @@
 extends layout
 
 block content
-  h1 This is Abiotic Page
-  -
-    let Abiotic = results  
+  h1= title
 
-  .container-fluid
-    .row
-      each item, index in results
-        .col-sm-2
-          .search-result(onclick=`buy(${index})`) 
-            h6 Name: #{item.name}
-            h6 Type: #{item.type}
-            h6 cost: #{item.cost}
-
-  a(href="/") Back to index page
-
-  script.
-    function buy(index) {
-      alert(`You purchased item ${index}`);
-    }
+  - var items = results
+  div(class="container-fluid")
+    div(class="row")
+      each s in items
+        div(class="col-sm-2", onclick=`buy('${s}')`)
+          | #{s.name}, #{s.type}, #{s.cost}
+          - let destination = `/Abiotic/update?id=${s._id}`
+          button.btn(class="btn-info ml-1", onclick=`dispatch('${destination}')`) Update
