@@ -1,24 +1,22 @@
-
 extends layout
+
 block content
     h1= title
-     if(toShow == null)
-    h2 No instance to show
-  else
-    - let item_id = toShow._id
-     - let item_name = toShow.item_name
-    - let item_type = toShow.item_type
-    - let item_cost = toShow.item_cost
-    div
-        div.row
-            div(class='AbioticAttr mr-3') Abiotic ID is:
-            div #{item_id}
-        div.row
-            div(class='AbioticAttr mr-3') item_name is:
-            div #{item_name}
-        div.row
-            div(class='AbioticAttr mr-3') item_type is:
-            div #{item_type}
-        div.row
-            div(class='AbioticAttr mr-3') item_cost is:
-            div #{item_cost}
+    
+        - let item_id = toShow._id
+        - let name = toShow.name
+        - let type = toShow.type
+        - let cost = toShow.cost
+        div
+            div.row
+                div(class='AbioticAttr mr-3') Abiotic ID is:
+                div #{item_id}
+            div.row
+                div(class='AbioticAttr mr-3') item_name is:
+                div #{name}
+            div.row
+                div(class='AbioticAttr mr-3') item_type is:
+                div #{type}
+            div.row
+                div(class='AbioticAttr mr-3') item_cost is:
+                div #{cost}
